@@ -10,11 +10,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get create" do
-    post users_path
-    assert_response :success
-  end
-
   test "should get show" do
     get user_path(@user)
     assert_response :success
