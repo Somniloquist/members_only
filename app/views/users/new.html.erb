@@ -1,16 +1,16 @@
 
 <div class="col-md-6 col-md-offset-3">
-  <h1>Sign up</h1>
-
-  <% unless @user.errors.empty? %>
-    <ul class="alert alert-danger">
-      <% @user.errors.full_messages.each do |message| %>
-        <li> <%= message %> </li>
-      <% end %>
-    </ul>
-  <% end %>
+  <h1 class="text-center">Sign up</h1>
 
   <%= form_with scope: :user, url: signup_path, local: true do |f| %>
+    <% unless @user.errors.empty? %>
+      <ul class="alert alert-danger">
+        <% @user.errors.full_messages.each do |message| %>
+          <li> <%= message %> </li>
+        <% end %>
+      </ul>
+    <% end %>
+
     <div class="form-group">
       <%= f.label :username %>
       <%= f.text_field :username, class: "form-control" %>
@@ -35,4 +35,5 @@
       <%= f.submit "Create Account",  class: "btn btn-primary btn-block" %>
     </div>
   <% end %>
+  <p>Already have an account? <%= link_to "Log in here.", login_path %></p>
 </div>
