@@ -16,13 +16,14 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
+  def generate_remember_token
+    remember_token =  SecureRandom.urlsafe_base64.to_s
+    self.remember_token = Digest::SHA1.hexdigest(remember_token)
+  end
+
   private
     def downcase_email
       self.email.downcase!
     end
 
-    def generate_remember_token
-      remember_token =  SecureRandom.urlsafe_base64.to_s
-      self.remember_token = Digest::SHA1.hexdigest(remember_token)
-    end
 end
