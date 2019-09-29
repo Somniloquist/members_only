@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
       login @user
-      current_user = @user
-      redirect_to @user
+      redirect_to @user, :locals => {:id => session[:current_user_id]}
     else
       render :new
     end
   end
 
   def destroy
+    logout
   end
 end
