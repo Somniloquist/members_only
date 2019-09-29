@@ -1,6 +1,10 @@
-  <div class="navbar navbar-default">
-    <nav>
-      <%= link_to "Members only", root_path, class: "navbar-brand" %>
-    </nav>
-  </div>
+<header>
+
+  <nav class="navbar navbar-default">
+    <%= link_to "Members only", root_path, class: "navbar-brand" %>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "Logout", logout_path, method: :delete %></li>
+    </ul>
+  </nav>
+
 </header>
