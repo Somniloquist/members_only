@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       login @user
       redirect_to @user, :locals => {:id => session[:current_user_id]}
     else
+      flash.now[:danger] = "Invalid email/password combination"
       render :new
     end
   end
