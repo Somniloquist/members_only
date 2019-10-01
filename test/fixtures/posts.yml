@@ -1,1 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_post_one:
+  title: Test post one
+  body: test post one body text
+  user_id: <%= User.first.id %>
