@@ -26,7 +26,10 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert logged_in?
 
     delete logout_path
+    follow_redirect!
     assert logged_out?
+    assert_template "static_pages/home"
+    assert_not flash.empty?
   end
 
 end
