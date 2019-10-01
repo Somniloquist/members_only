@@ -3,7 +3,11 @@
   <nav class="navbar navbar-default">
     <%= link_to "Members only", root_path, class: "navbar-brand" %>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Logout", logout_path, method: :delete %></li>
+      <% if logged_in? %>
+        <li><%= link_to current_user.username, user_path(current_user), class: "user_icon" %></li>
+        <li><%= link_to "Logout", logout_path, method: :delete %></li>
+      <% else %>
+      <% end %>
     </ul>
   </nav>
 
