@@ -16,13 +16,17 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?, "ERROR: Flash should be empty"
   end
 
-  test "Login with valid information" do
+  test "Login with valid information then logout" do
     get login_path
     assert_template "sessions/new"
     assert_select "form[action='/login']"
     post login_path params: { session: { email: @user.email, password: "password" } }
     follow_redirect!
     assert_template "users/show"
+    assert logged_in?
+
+    delete logout_path
+    assert logged_out?
   end
 
 end
