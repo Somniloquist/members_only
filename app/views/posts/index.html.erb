@@ -1,13 +1,25 @@
-<h1>Posts</h1>
-  <% @posts.each do |post| %>
+<% unless logged_in? %>
+  <div class="jumbotron">
+    <h1>Welcome to members only!</h1>
+    <h2>You are a member right?</h2>
 
-    <div class="post_preview">
-      <h3><%= link_to post.title, posts_path(@post) %></h3>
-      <% if logged_in? %>
-        <p>Posted by: <%= link_to post.user.username, user_path(post.user) %></p>
-      <% else %>
-        <p>Posted by: Anonymous</p>
-      <% end %>
+    <div class="signup_prompt">
+      <%= link_to "Sign up now", signup_path, class: "btn btn-primary" %>
+      <p>or <%= link_to "log in", login_path %> here.
     </div>
+    
+  </div>
+<% end %>
 
-  <% end %>
+<% @posts.each do |post| %>
+
+  <div class="post_preview">
+    <h3><%= link_to post.title, posts_path(@post) %></h3>
+    <% if logged_in? %>
+      <p>Posted by: <%= link_to post.user.username, user_path(post.user) %></p>
+    <% else %>
+      <p>Posted by: Anonymous</p>
+    <% end %>
+  </div>
+
+<% end %>
