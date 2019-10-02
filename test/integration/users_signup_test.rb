@@ -6,6 +6,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get new_user_path
     assert_template "users/new"
     assert_select "form[action='/signup']"
+    assert_not logged_in?
     assert_difference "User.count", 1 do
       post users_path, params: { user: { username: "testuser",
                                         email: "testuser@example.com",
@@ -14,6 +15,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_not flash.empty?
+    assert logged_in?
   end
 
   test "invalid signup information" do
