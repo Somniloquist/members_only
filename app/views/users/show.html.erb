@@ -1,1 +1,16 @@
 <h1><%= @user.username %></h1>
+
+<% unless @user.posts.nil? %>
+  <hr>
+  <h2>Your posts</h2>
+  <% @user.posts.each do |post| %>
+    <div class="post_preview">
+      <h3><%= link_to post.title, post %></h3>
+      <% if logged_in? %>
+        <p>Posted by: <%= link_to post.user.username, user_path(post.user) %></p>
+      <% else %>
+        <p>Posted by: Anonymous</p>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
