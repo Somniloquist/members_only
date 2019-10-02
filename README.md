@@ -28,4 +28,4 @@ rails server
 You can view a live demo of the app on heroku [here](https://members-only-3489.herokuapp.com/).
 
 ---
-_this project is part of [The Odin Project](https://www.theodinproject.com/) curriculum._
+_This project is part of [The Odin Project](https://www.theodinproject.com/) curriculum._
