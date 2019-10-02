@@ -11,15 +11,4 @@
   </div>
 <% end %>
 
-<% @posts.each do |post| %>
-
-  <div class="post_preview">
-    <h3><%= link_to post.title, posts_path(@post) %></h3>
-    <% if logged_in? %>
-      <p>Posted by: <%= link_to post.user.username, user_path(post.user) %></p>
-    <% else %>
-      <p>Posted by: Anonymous</p>
-    <% end %>
-  </div>
-
-<% end %>
+<%= render @posts %>

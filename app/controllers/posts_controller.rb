@@ -18,6 +18,10 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   private
     def require_login
       unless logged_in?
