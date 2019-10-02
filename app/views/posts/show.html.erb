@@ -1,2 +1,7 @@
 <h1><%= @post.title %></h1>
-<p><%= @post.body %></p>
+<% if logged_in? %>
+  <p>Posted by: <%= link_to @post.user.username, user_path(@post.user) %></p>
+<% else %>
+  <p>Posted by: Anonymous</p>
+<% end %>
+<p class="post_preview"><%= @post.body %></p>
