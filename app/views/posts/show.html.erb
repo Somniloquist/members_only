@@ -4,4 +4,6 @@
 <% else %>
   <p>Posted by: Anonymous</p>
 <% end %>
-<p class="post_preview"><%= @post.body %></p>
+<div class="post_body">
+  <p><%= simple_format(@post.body) %></p>
+</div>
